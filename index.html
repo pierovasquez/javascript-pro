@@ -18,40 +18,10 @@
     </video>
 
     <button>Play/Pause</button>
+    <button id="muteButton">Mute/Unmute</button>
   </main>
 
-  <script>
-    const video = document.querySelector('video');
-    const button = document.querySelector('button');
-    var isReproducingVideo = false;
-
-    function MediaPlayer(config) {
-      this.media = config.el;
-    }
-
-    MediaPlayer.prototype.playVideo = function () {
-      this.media.play();
-    }
-
-    MediaPlayer.prototype.pauseVideo = function () {
-      this.media.pause();
-    }
-
-    const player = new MediaPlayer({
-      el: video
-    });
-
-    // Si hacemos directamente video.play(), este va a dar un error porque los navegadores no permiten ese comportamiento.
-    button.onclick = () => {
-      if (!isReproducingVideo) {
-        player.playVideo();
-        isReproducingVideo = true;
-      } else {
-        player.pauseVideo();
-        isReproducingVideo = false;
-      }
-    }
-  </script>
+  <script type="module" src="assets/index.js"></script>
 </body>
 
 </html>
