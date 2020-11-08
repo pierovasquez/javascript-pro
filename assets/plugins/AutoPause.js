@@ -2,6 +2,7 @@
   constructor() {
     this.threshold = 0.25
     this.handleIntersection = this.handleIntersection.bind(this);
+    this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
   }
   run(player) {
     this.player = player;
@@ -9,7 +10,8 @@
       threshold: this.threshold
     })
 
-    observer.observe(player.media)
+    observer.observe(player.media);
+    document.addEventListener('visibilitychange', this.handleVisibilityChange)
   }
 
   handleIntersection(entries) {
@@ -21,6 +23,11 @@
       this.player.pauseVideo();
     }
   }
+
+  handleVisibilityChange() {
+    const isVisible = document.visibilityState === 'visible';
+    isVisible ? this.player.playVideo(): this.player.pauseVideo();
+  }  
 }
 
 export default AutoPause
