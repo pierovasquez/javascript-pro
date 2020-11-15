@@ -84,7 +84,7 @@ class Ads {
   private static instance: Ads;
   private ads: Ad[];
 
-  constructor() {
+  private constructor() {
     this.initAds();
   }
 
@@ -92,6 +92,7 @@ class Ads {
     if (!Ads.instance) {
       Ads.instance = new Ads();
     }
+
     return Ads.instance;
   }
 
@@ -103,6 +104,7 @@ class Ads {
     if (this.ads.length === 0) {
       this.initAds();
     }
+
     return this.ads.pop();
   }
 }
